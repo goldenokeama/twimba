@@ -1,6 +1,18 @@
 import { tweetsData } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
+let myTweetsData = tweetsData;
+const tweetsFromLocalStorage = JSON.parse(localStorage.getItem("myTweetsData"));
+
+if (tweetsFromLocalStorage) {
+  myTweetsData = tweetsFromLocalStorage;
+  render();
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem("myTweetsData", JSON.stringify(myTweetsData));
+}
+
 document.addEventListener("click", function (e) {
   if (e.target.dataset.like) {
     handleLikeClick(e.target.dataset.like);
@@ -14,7 +26,7 @@ document.addEventListener("click", function (e) {
 });
 
 function handleLikeClick(tweetId) {
-  const targetTweetObj = tweetsData.filter(function (tweet) {
+  const targetTweetObj = myTweetsData.filter(function (tweet) {
     return tweet.uuid === tweetId;
   })[0];
 
@@ -24,11 +36,13 @@ function handleLikeClick(tweetId) {
     targetTweetObj.likes++;
   }
   targetTweetObj.isLiked = !targetTweetObj.isLiked;
+
+  saveToLocalStorage();
   render();
 }
 
 function handleRetweetClick(tweetId) {
-  const targetTweetObj = tweetsData.filter(function (tweet) {
+  const targetTweetObj = myTweetsData.filter(function (tweet) {
     return tweet.uuid === tweetId;
   })[0];
 
@@ -38,6 +52,8 @@ function handleRetweetClick(tweetId) {
     targetTweetObj.retweets++;
   }
   targetTweetObj.isRetweeted = !targetTweetObj.isRetweeted;
+
+  saveToLocalStorage();
   render();
 }
 
@@ -49,7 +65,7 @@ function handleTweetBtnClick() {
   const tweetInput = document.getElementById("tweet-input");
 
   if (tweetInput.value) {
-    tweetsData.unshift({
+    myTweetsData.unshift({
       handle: `@Scrimba`,
       profilePic: `images/scrimbalogo.png`,
       likes: 0,
@@ -60,6 +76,8 @@ function handleTweetBtnClick() {
       isRetweeted: false,
       uuid: uuidv4(),
     });
+
+    saveToLocalStorage();
     render();
     tweetInput.value = "";
   }
@@ -68,7 +86,7 @@ function handleTweetBtnClick() {
 function getFeedHtml() {
   let feedHtml = ``;
 
-  tweetsData.forEach(function (tweet) {
+  myTweetsData.forEach(function (tweet) {
     let likeIconClass = "";
 
     if (tweet.isLiked) {
