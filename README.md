@@ -2,6 +2,10 @@
 
 Twimba is a simple Twitter (X) clone built with vanilla JavaScript that allows users to post tweets, like, retweet, and delete tweets — with data persisted in the browser using localStorage.
 
+## 📸 Project Screenshot
+
+<img src="project-screenshot.png" alt="twimba app screenshot" width="600" />
+
 ## 🚀 Features
 
 - 📝 Create new tweets
