@@ -2,9 +2,19 @@
 
 Twimba is a simple Twitter (X) clone built with vanilla JavaScript that allows users to post tweets, like, retweet, and delete tweets — with data persisted in the browser using localStorage.
 
+---
+
+## 🚀 Live Demo
+
+[View the deployed site here](https://twimba-golden.netlify.app/)
+
+---
+
 ## 📸 Project Screenshot
 
-<img src="project-screenshot.png" alt="twimba app screenshot" width="600" />
+<img src="project-screenshot.png" alt="twimba app screenshot" width="400" />
+
+---
 
 ## 🚀 Features
 
@@ -16,6 +26,8 @@ Twimba is a simple Twitter (X) clone built with vanilla JavaScript that allows u
 - 💾 Persistent data using `localStorage`
 - 🎨 Clean and responsive UI
 
+---
+
 ## 🛠️ Tech Stack
 
 - HTML5
@@ -24,6 +36,8 @@ Twimba is a simple Twitter (X) clone built with vanilla JavaScript that allows u
 - UUID (for unique tweet IDs)
 - Font Awesome (icons)
 
+---
+
 ## ⚙️ How It Works
 
 - Tweets are stored in an array (`tweetsData`)
@@ -31,6 +45,8 @@ Twimba is a simple Twitter (X) clone built with vanilla JavaScript that allows u
 - All interactions (like, retweet, delete, etc.) update this state
 - Changes are saved to `localStorage`
 - The UI is re-rendered dynamically after every update
+
+---
 
 ## ▶️ Getting Started
 
@@ -47,6 +63,8 @@ cd twimba
 ```
 
 3. Open `index.html` in your browser
+
+---
 
 ## 💡 Key Concepts Practiced
 
